@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  position: 1
+  points: 1
+  victorys: 1
+  loses: 1
+  draws: 1
+  goal_scoredes: 1
+  goal_concededs: 1
+  position_previous: 1
+  exact_scores: 1
+
+two:
+  position: 1
+  points: 1
+  victorys: 1
+  loses: 1
+  draws: 1
+  goal_scoredes: 1
+  goal_concededs: 1
+  position_previous: 1
+  exact_scores: 1

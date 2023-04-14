@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  limit_date_bet: 2023-04-14 13:11:56
+  description: MyString
+  status: MyString
+
+two:
+  name: MyString
+  limit_date_bet: 2023-04-14 13:11:56
+  description: MyString
+  status: MyString

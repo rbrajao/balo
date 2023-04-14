@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Clashes</h1>
+
+<div id="clashes">
+  <% @clashes.each do |clash| %>
+    <%= render clash %>
+    <p>
+      <%= link_to "Show this clash", clash %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New clash", new_clash_path %>

@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  score_home: 1
+  score_visit: 1
+  total_point: MyString
+  status: MyString
+
+two:
+  score_home: 1
+  score_visit: 1
+  total_point: MyString
+  status: MyString

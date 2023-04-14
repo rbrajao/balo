@@ -1,0 +1,2 @@
+class Clash < ApplicationRecord
+end

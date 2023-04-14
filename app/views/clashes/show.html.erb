@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @clash %>
+
+<div>
+  <%= link_to "Edit this clash", edit_clash_path(@clash) %> |
+  <%= link_to "Back to clashes", clashes_path %>
+
+  <%= button_to "Destroy this clash", @clash, method: :delete %>
+</div>

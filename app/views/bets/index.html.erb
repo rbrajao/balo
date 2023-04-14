@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Bets</h1>
+
+<div id="bets">
+  <% @bets.each do |bet| %>
+    <%= render bet %>
+    <p>
+      <%= link_to "Show this bet", bet %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New bet", new_bet_path %>

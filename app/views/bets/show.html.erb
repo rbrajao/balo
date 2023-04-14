@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @bet %>
+
+<div>
+  <%= link_to "Edit this bet", edit_bet_path(@bet) %> |
+  <%= link_to "Back to bets", bets_path %>
+
+  <%= button_to "Destroy this bet", @bet, method: :delete %>
+</div>

@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Division users</h1>
+
+<div id="division_users">
+  <% @division_users.each do |division_user| %>
+    <%= render division_user %>
+    <p>
+      <%= link_to "Show this division user", division_user %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New division user", new_division_user_path %>

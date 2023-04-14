@@ -1,0 +1,2 @@
+class DivisionUser < ApplicationRecord
+end
