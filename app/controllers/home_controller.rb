@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
 
     def index
-        puts "pagina inicial"
+        @teste = "Campo para visualizar"
     end
 
 end
