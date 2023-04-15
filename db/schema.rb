@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_15_002244) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_15_004237) do
   create_table "bets", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "score_home"
     t.integer "score_visit"
@@ -18,6 +18,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_15_002244) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "users_id"
+    t.bigint "matches_id"
+    t.index ["matches_id"], name: "index_bets_on_matches_id"
+    t.index ["users_id"], name: "index_bets_on_users_id"
   end
 
   create_table "championships", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -34,6 +38,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_15_002244) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "userhome_id"
+    t.bigint "uservisit_id"
+    t.bigint "rounds_id"
+    t.bigint "divisions_id"
+    t.index ["divisions_id"], name: "index_clashes_on_divisions_id"
+    t.index ["rounds_id"], name: "index_clashes_on_rounds_id"
+    t.index ["userhome_id"], name: "index_clashes_on_userhome_id"
+    t.index ["uservisit_id"], name: "index_clashes_on_uservisit_id"
   end
 
   create_table "division_users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -72,6 +84,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_15_002244) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "teamhome_id"
+    t.bigint "teamvisit_id"
+    t.bigint "rounds_id"
+    t.index ["rounds_id"], name: "index_matches_on_rounds_id"
+    t.index ["teamhome_id"], name: "index_matches_on_teamhome_id"
+    t.index ["teamvisit_id"], name: "index_matches_on_teamvisit_id"
   end
 
   create_table "rounds", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -108,9 +126,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_15_002244) do
     t.index ["teams_id"], name: "index_users_on_teams_id"
   end
 
+  add_foreign_key "bets", "matches", column: "matches_id"
+  add_foreign_key "bets", "users", column: "users_id"
+  add_foreign_key "clashes", "divisions", column: "divisions_id"
+  add_foreign_key "clashes", "rounds", column: "rounds_id"
+  add_foreign_key "clashes", "users", column: "userhome_id"
+  add_foreign_key "clashes", "users", column: "uservisit_id"
   add_foreign_key "division_users", "divisions", column: "divisions_id"
   add_foreign_key "division_users", "users", column: "users_id"
   add_foreign_key "divisions", "championships", column: "championships_id"
+  add_foreign_key "matches", "rounds", column: "rounds_id"
+  add_foreign_key "matches", "teams", column: "teamhome_id"
+  add_foreign_key "matches", "teams", column: "teamvisit_id"
   add_foreign_key "rounds", "championships", column: "championships_id"
   add_foreign_key "users", "teams", column: "teams_id"
 end
