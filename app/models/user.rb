@@ -1,6 +1,6 @@
 class User < ApplicationRecord
 
-    belongs_to :team, optional: true
+    belongs_to :team
     
     has_many :division_users
     has_many :bets

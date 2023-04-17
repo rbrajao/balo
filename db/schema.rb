@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_15_004237) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_17_194623) do
   create_table "bets", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "score_home"
     t.integer "score_visit"
@@ -122,8 +122,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_15_004237) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "teams_id"
-    t.index ["teams_id"], name: "index_users_on_teams_id"
+    t.bigint "team_id"
+    t.index ["team_id"], name: "index_users_on_team_id"
   end
 
   add_foreign_key "bets", "matches", column: "matches_id"
@@ -139,5 +139,4 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_15_004237) do
   add_foreign_key "matches", "teams", column: "teamhome_id"
   add_foreign_key "matches", "teams", column: "teamvisit_id"
   add_foreign_key "rounds", "championships", column: "championships_id"
-  add_foreign_key "users", "teams", column: "teams_id"
 end
