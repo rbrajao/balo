@@ -52,6 +52,11 @@
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.label :teams_id, style: "display: block" %>
+    <%= form.collection_select(:teams_id, @teams, :id, :name) %>
+  </div>
+
+  <div>
+    user: <%= form.submit %>
   </div>
 <% end %>
