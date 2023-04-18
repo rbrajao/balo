@@ -66,7 +66,7 @@ class MatchesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def match_params
-      params.require(:match).permit(:name, :score_home, :score_visit, :status)
+      params.require(:match).permit(:name, :score_home, :score_visit, :status, :match_date)
     end
 
     def set_round

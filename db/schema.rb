@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_18_145532) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_18_181545) do
   create_table "bets", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "score_home"
     t.integer "score_visit"
@@ -87,6 +87,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_18_145532) do
     t.bigint "teamhome_id"
     t.bigint "teamvisit_id"
     t.bigint "round_id"
+    t.datetime "match_date"
     t.index ["round_id"], name: "index_matches_on_round_id"
     t.index ["teamhome_id"], name: "index_matches_on_teamhome_id"
     t.index ["teamvisit_id"], name: "index_matches_on_teamvisit_id"
