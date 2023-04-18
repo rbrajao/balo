@@ -1,4 +1,4 @@
 class DivisionUser < ApplicationRecord
-    belongs_to :users
-    belongs_to :divisions
+    belongs_to :user
+    belongs_to :division
 end

@@ -32,6 +32,17 @@
   </div>
 
   <div>
+    <%= form.label :user_id, style: "display: block" %>
+    <%= form.collection_select(:user_id, @users, :id, :username) %>
+  </div>
+
+  <div>
+    <%= form.label :match_id, style: "display: block" %>
+    <%= form.collection_select(:match_id, @matches, :id, :name) %>
+  </div>
+
+
+  <div>
     <%= form.submit %>
   </div>
 <% end %>

@@ -1,5 +1,7 @@
 class BetsController < ApplicationController
   before_action :set_bet, only: %i[ show edit update destroy ]
+  before_action :set_user, only: %i[ show edit update new ]
+  before_action :set_match, only: %i[ show edit update new ]
 
   # GET /bets or /bets.json
   def index
@@ -65,6 +67,16 @@ class BetsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def bet_params
-      params.require(:bet).permit(:score_home, :score_visit, :total_point, :status)
+      params.require(:bet).permit(:score_home, :score_visit, :total_point, :status, :user_id, :match_id)
     end
+
+
+    def set_match
+      @matches = Match.all
+    end
+
+    def set_user
+      @users = User.all
+    end
+
 end

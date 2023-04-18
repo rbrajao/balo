@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_17_235308) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_18_000902) do
   create_table "bets", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "score_home"
     t.integer "score_visit"
@@ -18,10 +18,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_17_235308) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "users_id"
-    t.bigint "matches_id"
-    t.index ["matches_id"], name: "index_bets_on_matches_id"
-    t.index ["users_id"], name: "index_bets_on_users_id"
+    t.bigint "user_id"
+    t.bigint "match_id"
+    t.index ["match_id"], name: "index_bets_on_match_id"
+    t.index ["user_id"], name: "index_bets_on_user_id"
   end
 
   create_table "championships", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -126,8 +126,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_17_235308) do
     t.index ["team_id"], name: "index_users_on_team_id"
   end
 
-  add_foreign_key "bets", "matches", column: "matches_id"
-  add_foreign_key "bets", "users", column: "users_id"
+  add_foreign_key "bets", "matches"
+  add_foreign_key "bets", "users"
   add_foreign_key "clashes", "divisions", column: "divisions_id"
   add_foreign_key "clashes", "rounds", column: "rounds_id"
   add_foreign_key "clashes", "users", column: "userhome_id"
