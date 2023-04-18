@@ -1,5 +1,7 @@
 class DivisionUsersController < ApplicationController
   before_action :set_division_user, only: %i[ show edit update destroy ]
+  before_action :set_user, only: %i[ show edit update new ]
+  before_action :set_division, only: %i[ show edit update new ]
 
   # GET /division_users or /division_users.json
   def index
@@ -65,6 +67,15 @@ class DivisionUsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def division_user_params
-      params.require(:division_user).permit(:position, :points, :victorys, :loses, :draws, :goal_scoredes, :goal_concededs, :position_previous, :exact_scores)
+      params.require(:division_user).permit(:position, :points, :victorys, :loses, :draws, :goal_scoredes, :goal_concededs, :position_previous, :exact_scores, :user_id, :division_id, :username)
     end
+
+    def set_user
+      @users = User.all
+    end
+
+    def set_division
+      @divisions = Division.all
+    end
+
 end

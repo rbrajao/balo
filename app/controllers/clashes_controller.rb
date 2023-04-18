@@ -1,5 +1,7 @@
 class ClashesController < ApplicationController
   before_action :set_clash, only: %i[ show edit update destroy ]
+  before_action :set_division, only: %i[ show edit update new ]
+  before_action :set_round, only: %i[ show edit update new ]
 
   # GET /clashes or /clashes.json
   def index
@@ -66,5 +68,13 @@ class ClashesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def clash_params
       params.require(:clash).permit(:score_home, :score_visit, :status)
+    end
+
+    def set_division
+      @divisions = Division.all
+    end
+
+    def set_round
+      @rounds = Round.all
     end
 end

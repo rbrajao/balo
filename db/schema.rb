@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_18_000902) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_18_144856) do
   create_table "bets", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "score_home"
     t.integer "score_visit"
@@ -40,10 +40,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_18_000902) do
     t.datetime "updated_at", null: false
     t.bigint "userhome_id"
     t.bigint "uservisit_id"
-    t.bigint "rounds_id"
-    t.bigint "divisions_id"
-    t.index ["divisions_id"], name: "index_clashes_on_divisions_id"
-    t.index ["rounds_id"], name: "index_clashes_on_rounds_id"
+    t.bigint "round_id"
+    t.bigint "division_id"
+    t.index ["division_id"], name: "index_clashes_on_division_id"
+    t.index ["round_id"], name: "index_clashes_on_round_id"
     t.index ["userhome_id"], name: "index_clashes_on_userhome_id"
     t.index ["uservisit_id"], name: "index_clashes_on_uservisit_id"
   end
@@ -60,10 +60,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_18_000902) do
     t.integer "exact_scores"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "users_id"
-    t.bigint "divisions_id"
-    t.index ["divisions_id"], name: "index_division_users_on_divisions_id"
-    t.index ["users_id"], name: "index_division_users_on_users_id"
+    t.bigint "user_id"
+    t.bigint "division_id"
+    t.index ["division_id"], name: "index_division_users_on_division_id"
+    t.index ["user_id"], name: "index_division_users_on_user_id"
   end
 
   create_table "divisions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -128,12 +128,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_18_000902) do
 
   add_foreign_key "bets", "matches"
   add_foreign_key "bets", "users"
-  add_foreign_key "clashes", "divisions", column: "divisions_id"
-  add_foreign_key "clashes", "rounds", column: "rounds_id"
+  add_foreign_key "clashes", "divisions"
+  add_foreign_key "clashes", "rounds"
   add_foreign_key "clashes", "users", column: "userhome_id"
   add_foreign_key "clashes", "users", column: "uservisit_id"
-  add_foreign_key "division_users", "divisions", column: "divisions_id"
-  add_foreign_key "division_users", "users", column: "users_id"
+  add_foreign_key "division_users", "divisions"
+  add_foreign_key "division_users", "users"
   add_foreign_key "divisions", "championships"
   add_foreign_key "matches", "rounds", column: "rounds_id"
   add_foreign_key "matches", "teams", column: "teamhome_id"
