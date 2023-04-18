@@ -1,5 +1,6 @@
 class MatchesController < ApplicationController
   before_action :set_match, only: %i[ show edit update destroy ]
+  before_action :set_round, only: %i[ show edit update new ]
 
   # GET /matches or /matches.json
   def index
@@ -66,5 +67,9 @@ class MatchesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def match_params
       params.require(:match).permit(:name, :score_home, :score_visit, :status)
+    end
+
+    def set_round
+      @rounds = Round.all
     end
 end
