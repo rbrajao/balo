@@ -32,6 +32,11 @@
   </div>
 
   <div>
+    <%= form.label :championship_id, style: "display: block" %>
+    <%= form.collection_select(:championship_id, @championships, :id, :name) %>
+  </div>  
+
+  <div>
     <%= form.submit %>
   </div>
 <% end %>

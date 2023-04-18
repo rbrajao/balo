@@ -1,4 +1,6 @@
 class Bet < ApplicationRecord
-    belongs_to :users
-    belongs_to :matches
+    belongs_to :user
+    belongs_to :match
+
+    
 end

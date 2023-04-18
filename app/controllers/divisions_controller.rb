@@ -1,5 +1,6 @@
 class DivisionsController < ApplicationController
   before_action :set_division, only: %i[ show edit update destroy ]
+  before_action :set_championship, only: %i[ show edit update new ]
 
   # GET /divisions or /divisions.json
   def index
@@ -65,6 +66,10 @@ class DivisionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def division_params
-      params.require(:division).permit(:name, :goup, :godown, :status)
+      params.require(:division).permit(:name, :goup, :godown, :status, :championship_id)
+    end
+
+    def set_championship
+      @championships = Championship.all
     end
 end

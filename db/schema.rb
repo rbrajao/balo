@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_17_194623) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_17_235308) do
   create_table "bets", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "score_home"
     t.integer "score_visit"
@@ -73,8 +73,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_17_194623) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "championships_id"
-    t.index ["championships_id"], name: "index_divisions_on_championships_id"
+    t.bigint "championship_id"
+    t.index ["championship_id"], name: "index_divisions_on_championship_id"
   end
 
   create_table "matches", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -99,8 +99,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_17_194623) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "championships_id"
-    t.index ["championships_id"], name: "index_rounds_on_championships_id"
+    t.bigint "championship_id"
+    t.index ["championship_id"], name: "index_rounds_on_championship_id"
   end
 
   create_table "teams", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -134,9 +134,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_17_194623) do
   add_foreign_key "clashes", "users", column: "uservisit_id"
   add_foreign_key "division_users", "divisions", column: "divisions_id"
   add_foreign_key "division_users", "users", column: "users_id"
-  add_foreign_key "divisions", "championships", column: "championships_id"
+  add_foreign_key "divisions", "championships"
   add_foreign_key "matches", "rounds", column: "rounds_id"
   add_foreign_key "matches", "teams", column: "teamhome_id"
   add_foreign_key "matches", "teams", column: "teamvisit_id"
-  add_foreign_key "rounds", "championships", column: "championships_id"
+  add_foreign_key "rounds", "championships"
 end

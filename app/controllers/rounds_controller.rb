@@ -1,5 +1,6 @@
 class RoundsController < ApplicationController
   before_action :set_round, only: %i[ show edit update destroy ]
+  before_action :set_championship, only: %i[ show edit update new ]
 
   # GET /rounds or /rounds.json
   def index
@@ -65,6 +66,13 @@ class RoundsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def round_params
-      params.require(:round).permit(:name, :limit_date_bet, :description, :status)
+      params.require(:round).permit(:name, :limit_date_bet, :description, :status, :championship_id)
     end
+
+
+    def set_championship
+      @championships = Championship.all
+    end
+
+
 end

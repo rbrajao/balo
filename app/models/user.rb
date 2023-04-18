@@ -12,11 +12,4 @@ class User < ApplicationRecord
     validates :email, presence: true, uniqueness: true
     validates :username, presence: true, uniqueness: true
 
-    def team_name
-        if self.team.blank? 
-            " - "           
-        else
-           self.team.name 
-        end
-    end
 end
