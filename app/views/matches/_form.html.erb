@@ -35,6 +35,11 @@
     <%= form.label :match_date, style: "display: block" %>
     <%= form.datetime_field :match_date %>
   </div>
+  
+  <div>
+    <%= form.label :round_id, style: "display: block" %>
+    <%= form.collection_select(:round_id, @rounds, :id, :name) %>
+  </div>
 
   <div>
     <%= form.submit %>
