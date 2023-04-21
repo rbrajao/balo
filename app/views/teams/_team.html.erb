@@ -2,7 +2,8 @@
   
   <tr>
       <td><%= team.name %></td>
-      <td><%= team.imagem %></td>
+
+      <td><%= image_tag url_for(team.avatar_url)%></td>
       <td><%= team.status %></td>
       <td><%= team.created_at %></td>
       <td><%= team.updated_at %></td>

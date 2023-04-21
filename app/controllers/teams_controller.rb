@@ -25,6 +25,9 @@ class TeamsController < ApplicationController
 
     respond_to do |format|
       if @team.save
+
+        @team.avatar.variant(resize: "100x100")
+
         format.html { redirect_to team_url(@team), notice: "Team was successfully created." }
         format.json { render :show, status: :created, location: @team }
       else
@@ -38,6 +41,9 @@ class TeamsController < ApplicationController
   def update
     respond_to do |format|
       if @team.update(team_params)
+
+        @team.avatar.variant(resize: "100x100")
+
         format.html { redirect_to team_url(@team), notice: "Team was successfully updated." }
         format.json { render :show, status: :ok, location: @team }
       else
@@ -65,6 +71,6 @@ class TeamsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def team_params
-      params.require(:team).permit(:name, :imagem, :status)
+      params.require(:team).permit(:name, :imagem, :status, :avatar)
     end
 end
