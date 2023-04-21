@@ -1,14 +1,27 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Teams</h1>
+<h1>Cadastro dos times de futebol</h1>
 
 <div id="teams">
-  <% @teams.each do |team| %>
-    <%= render team %>
-    <p>
-      <%= link_to "Show this team", team %>
-    </p>
-  <% end %>
+  <table>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Imagem</th>
+        <th>Status</th>
+        <th>Data criação</th>
+        <th>Data atualização</th>
+        <th>Editar</th>
+        <th>Excluir</th>
+      </tr>
+    </thead>
+    <tbody >
+
+      <% @teams.each do |team| %>
+        <%= render team %>
+      <% end %>
+    </tbody>
+  </table>
 </div>
 
 <%= link_to "New team", new_team_path %>

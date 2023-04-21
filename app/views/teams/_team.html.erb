@@ -1,17 +1,13 @@
 <div id="<%= dom_id team %>">
-  <p>
-    <strong>Name:</strong>
-    <%= team.name %>
-  </p>
-
-  <p>
-    <strong>Imagem:</strong>
-    <%= team.imagem %>
-  </p>
-
-  <p>
-    <strong>Status:</strong>
-    <%= team.status %>
-  </p>
-
+  
+  <tr>
+      <td><%= team.name %></td>
+      <td><%= team.imagem %></td>
+      <td><%= team.status %></td>
+      <td><%= team.created_at %></td>
+      <td><%= team.updated_at %></td>
+      <td><%= link_to "Editar", edit_team_path(team) %></td>
+      <td>Excluir</td>
+  </tr>
+    
 </div>
