@@ -22,12 +22,10 @@ class TeamsController < ApplicationController
   # POST /teams or /teams.json
   def create
     @team = Team.new(team_params)
-
+    
     respond_to do |format|
       if @team.save
-
-        @team.avatar.variant(resize: "100x100")
-
+    
         format.html { redirect_to team_url(@team), notice: "Team was successfully created." }
         format.json { render :show, status: :created, location: @team }
       else
@@ -41,9 +39,6 @@ class TeamsController < ApplicationController
   def update
     respond_to do |format|
       if @team.update(team_params)
-
-        @team.avatar.variant(resize: "100x100")
-
         format.html { redirect_to team_url(@team), notice: "Team was successfully updated." }
         format.json { render :show, status: :ok, location: @team }
       else
