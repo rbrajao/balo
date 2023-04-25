@@ -19,8 +19,9 @@ Rails.application.routes.draw do
   get 'campeonatos' => 'championships#index'
   get 'confrontos' => 'clashes#index'
   get 'competidor' => 'users#index'
+  get 'admin' => 'admin#index'
    
 
   # Defines the root path route ("/")
-  root "home#index"
+  root "admin#index"
 end
