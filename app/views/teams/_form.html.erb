@@ -11,22 +11,62 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name, autofocus: true %>
-  </div>
+  <main id="main" class="main">
+    <!-- start Page Title -->
+    <div class="pagetitle">
+      <h1>Cadastro de times de futebol</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><%= link_to "Home", root_path %></li>
+          <li class="breadcrumb-item active">Times</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
 
-  <div>
-    <%= form.label :avatar, style: "display: block" %>
-    <%= form.file_field :avatar %>
-  </div>
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-6">
 
-  <div>
-    <%= form.label :status, style: "display: block" %>
-    <%= form.check_box :status %>
-  </div>
+          <div class="card" id="teams">
+            <div class="card-body" >
+              <h5 class="card-title">Dados do time</h5>
 
-  <div>
-    <%= form.submit %>
-  </div>
+                  <!-- Horizontal Form -->
+              <form>
+                <div class="row mb-3">
+                  <%= form.label 'Time', class: "col-sm-2 col-form-label" %>
+                  <div class="col-sm-10">
+                    <%= form.text_field :name, autofocus: true, class: "form-control" %>
+                  </div>
+                </div>
+               <div class="row mb-3">
+                  <%= form.label 'Escudo', class: "col-sm-2 col-form-label" %>
+                  <div class="col-sm-10">
+                    <%= form.file_field :avatar, class: "form-control" %>
+                  </div>
+                </div>
+                 <div class="row mb-3">
+                 <%= form.label 'Ativo?', class: "col-sm-2 col-form-label" %>
+                  <div class="col-sm-10">
+                      <%= form.check_box :status, class: "form-check" %>
+                    </div>
+                  </div>
+                </div>
+               
+                <div class="text-center">
+                  <%= form.submit "Alterar",class: "btn btn-primary"%>
+                  <%= button_to "Cancelar", teams_path, class: "btn btn-secondary" %>
+                </div>
+              </form><!-- End Horizontal Form -->
+
+
+          
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <%= link_to "Back to teams", teams_path %>
+  </main><!-- End #main -->
+  
 <% end %>
