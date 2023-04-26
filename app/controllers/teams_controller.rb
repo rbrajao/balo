@@ -1,4 +1,6 @@
 class TeamsController < ApplicationController
+  layout 'application'
+
   before_action :set_team, only: %i[ show edit update destroy ]
 
   # GET /teams or /teams.json
