@@ -11,33 +11,71 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
-  </div>
+   <main id="main" class="main">
+    <!-- start Page Title -->
+    <div class="pagetitle">
+      <h1>Cadastro das divisões</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><%= link_to "Home", root_path %></li>
+          <li class="breadcrumb-item active">divisões</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
 
-  <div>
-    <%= form.label :goup, style: "display: block" %>
-    <%= form.number_field :goup %>
-  </div>
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-8">
 
-  <div>
-    <%= form.label :godown, style: "display: block" %>
-    <%= form.number_field :godown %>
-  </div>
+          <div class="card" id="divisions">
+            <div class="card-body" >
+              <h5 class="card-title">Dados da divisão</h5>
 
-  <div>
-    <%= form.label :status, style: "display: block" %>
-    <%= form.text_field :status %>
-  </div>
+                  <!-- Horizontal Form -->
+            
+                <div class="row mb-3">
+                  <%= form.label 'Divisão', class: "col-sm-2 col-form-label" %>
+                  <div class="col-sm-10">
+                    <%= form.text_field :name, autofocus: true, class: "form-control" %>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <%= form.label 'Sobem', class: "col-sm-2 col-form-label" %>
+                  <div class="col-sm-10">
+                    <%= form.number_field :goup, class: "form-control" %>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <%= form.label 'Descem', class: "col-sm-2 col-form-label" %>
+                  <div class="col-sm-10">
+                    <%= form.number_field :godown, class: "form-control" %>
+                  </div>
+                </div>
+                 <div class="row mb-3">
+                 <%= form.label 'Ativo?', class: "col-sm-2 col-form-label" %>
+                  <div class="col-sm-10">
+                      <%= form.check_box :status, class: "form-check" %>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <%= form.label 'Campeonato', class: "col-sm-2 col-form-label" %>
+                  <div class="col-sm-10">
+                     <%= form.collection_select(:championship_id, @championships, :id, :name) %>
+                  </div>
+                </div>
+               
+                <div class="text-center">
+                  <%= form.submit "Alterar",class: "btn btn-primary"%>
+                </div>
+                <br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <%= link_to "Voltar", divisions_path %>
 
-   <div>
-    <%= form.label :championship_id, style: "display: block" %>
-    <%= form.collection_select(:championship_id, @championships, :id, :name) %>
-  </div> 
+  </main><!-- End #main -->
 
-
-  <div>
-    <%= form.submit %>
-  </div>
 <% end %>

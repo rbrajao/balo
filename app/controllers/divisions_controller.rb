@@ -2,6 +2,9 @@ class DivisionsController < ApplicationController
   before_action :set_division, only: %i[ show edit update destroy ]
   before_action :set_championship, only: %i[ show edit update new ]
 
+  # template do portal 
+  layout 'application'
+
   # GET /divisions or /divisions.json
   def index
     @divisions = Division.all
@@ -26,7 +29,7 @@ class DivisionsController < ApplicationController
 
     respond_to do |format|
       if @division.save
-        format.html { redirect_to division_url(@division), notice: "Division was successfully created." }
+        format.html { redirect_to divisions_url, notice: "Division was successfully created." }
         format.json { render :show, status: :created, location: @division }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +42,7 @@ class DivisionsController < ApplicationController
   def update
     respond_to do |format|
       if @division.update(division_params)
-        format.html { redirect_to division_url(@division), notice: "Division was successfully updated." }
+        format.html { redirect_to divisions_url, notice: "Division was successfully updated." }
         format.json { render :show, status: :ok, location: @division }
       else
         format.html { render :edit, status: :unprocessable_entity }

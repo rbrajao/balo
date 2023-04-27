@@ -1,27 +1,15 @@
 <div id="<%= dom_id division %>">
-  <p>
-    <strong>Name:</strong>
-    <%= division.name %>
-  </p>
-
-  <p>
-    <strong>Goup:</strong>
-    <%= division.goup %>
-  </p>
-
-  <p>
-    <strong>Godown:</strong>
-    <%= division.godown %>
-  </p>
-
-  <p>
-    <strong>Status:</strong>
-    <%= division.status %>
-  </p>
-
- <p>
-    <strong>Campeonato:</strong>
-    <%= division.championship.name %>
-  </p>
+  
+    <tr>
+      <td><%= division.championship.name %></td>
+      <td><%= division.name %></td>
+      <td><%= division.goup %></td>
+      <td><%= division.godown %></td>
+      <td><%= division.status %></td>
+      <td><%= division.created_at %></td>
+      <td><%= division.updated_at %></td>
+      <td><%= link_to "Editar", edit_division_path(division) %></td>
+      <td>Excluir</td>
+    </tr>
 
 </div>
