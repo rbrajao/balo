@@ -1,17 +1,13 @@
 <div id="<%= dom_id championship %>">
-  <p>
-    <strong>Name:</strong>
-    <%= championship.name %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= championship.description %>
-  </p>
-
-  <p>
-    <strong>Status:</strong>
-    <%= championship.status %>
-  </p>
+  
+  <tr>
+      <td><%= championship.name %></td>
+      <td><%= championship.description %></td>
+      <td><%= championship.status %></td>
+      <td><%= championship.created_at %></td>
+      <td><%= championship.updated_at %></td>
+      <td><%= link_to "Editar", edit_championship_path(championship) %></td>
+      <td>Excluir</td>
+  </tr>
 
 </div>

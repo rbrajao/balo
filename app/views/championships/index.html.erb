@@ -1,16 +1,47 @@
-<p style="color: green"><%= notice %></p>
+<main id="main" class="main">
+    <!-- start Page Title -->
+    <div class="pagetitle">
+      <h1>Cadastro dos campeonatos<span style="color: green"><%= notice %></span></h1>
+      
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><%= link_to "Home", root_path %></li>
+          <li class="breadcrumb-item active">Campeonatos</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
 
-<h1>Championships</h1>
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
 
-<div id="championships">
-  <% @championships.each do |championship| %>
-    <%= render championship %>
-    <p>
-      <%= link_to "Show this championship", championship %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New championship", new_championship_path %>
-<br>
-<%= link_to "Home", root_path %>
+          <div class="card" id="championships">
+            <div class="card-body" >
+              <h5 class="card-title">Lista dos campeonatos - <%= link_to "Novo campeonato", new_championship_path %></h5>
+              
+              <!-- Default Table -->
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Descrição</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Data criação</th>
+                    <th scope="col">Data atualização</th>
+                    <th scope="col">Editar</th>
+                    <th scope="col">Excluir</th>
+                  </tr>
+                </thead>
+                <tbody>
+                 <% @championships.each do |championship| %>
+                    <%= render championship %>
+                  <% end %>
+                </tbody>
+              </table>
+              <!-- End Default Table Example -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main><!-- End #main -->

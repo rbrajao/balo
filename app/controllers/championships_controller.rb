@@ -1,4 +1,6 @@
 class ChampionshipsController < ApplicationController
+  layout 'application'
+  
   before_action :set_championship, only: %i[ show edit update destroy ]
 
   # GET /championships or /championships.json
@@ -25,7 +27,7 @@ class ChampionshipsController < ApplicationController
 
     respond_to do |format|
       if @championship.save
-        format.html { redirect_to championship_url(@championship), notice: "Championship was successfully created." }
+        format.html { redirect_to championships_url, notice: "Championship was successfully created." }
         format.json { render :show, status: :created, location: @championship }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +40,7 @@ class ChampionshipsController < ApplicationController
   def update
     respond_to do |format|
       if @championship.update(championship_params)
-        format.html { redirect_to championship_url(@championship), notice: "Championship was successfully updated." }
+        format.html { redirect_to championships_url, notice: "Championship was successfully updated." }
         format.json { render :show, status: :ok, location: @championship }
       else
         format.html { render :edit, status: :unprocessable_entity }
