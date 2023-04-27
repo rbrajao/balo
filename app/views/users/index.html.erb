@@ -1,17 +1,56 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Users</h1>
 
-<div id="users">
-  <% @users.each do |user| %>
-    <%= render user %>
-    <p>
-      <%= link_to "Show this user", user %>
-    </p>
-  <% end %>
-</div>
+<main id="main" class="main">
+    <!-- start Page Title -->
+    <div class="pagetitle">
+      <h1>Cadastro de times de futebol <span style="color: green"><%= notice %></span></h1>
+      
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><%= link_to "Home", root_path %></li>
+          <li class="breadcrumb-item active">Times</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
 
-<%= link_to "New user", new_user_path %>
-<br>
-<%= link_to "Home", root_path %>
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+
+          <div class="card" id="users">
+            <div class="card-body" >
+              <h5 class="card-title">Lista dos Usuários - <%= link_to "Novo usuário", new_user_path %></h5>
+              
+              <!-- Default Table -->
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Admin</th>
+                    <th scope="col">Documento</th>
+                    <th scope="col">Notificações</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Data criação</th>
+                    <th scope="col">Data atualização</th>
+                    <th scope="col">Editar</th>
+                    <th scope="col">Excluir</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @users.each do |user| %>
+                    <%= render user %>
+                  <% end %>
+                </tbody>
+              </table>
+              <!-- End Default Table Example -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main><!-- End #main -->
 

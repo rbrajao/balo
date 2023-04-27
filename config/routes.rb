@@ -20,7 +20,6 @@ Rails.application.routes.draw do
   get 'confrontos' => 'clashes#index'
   get 'competidor' => 'users#index'
   get 'admin' => 'admin#index'
-   
 
   # Defines the root path route ("/")
   root "admin#index"

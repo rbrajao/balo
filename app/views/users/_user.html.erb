@@ -1,47 +1,16 @@
 <div id="<%= dom_id user %>">
-  <p>
-    <strong>Name:</strong>
-    <%= user.name %>
-  </p>
-
-  <p>
-    <strong>Username:</strong>
-    <%= user.username %>
-  </p>
-
-  <p>
-    <strong>Password:</strong>
-    <%= user.password %>
-  </p>
-
-  <p>
-    <strong>Email:</strong>
-    <%= user.email %>
-  </p>
-
-  <p>
-    <strong>Admin:</strong>
-    <%= user.admin %>
-  </p>
-
-  <p>
-    <strong>Document:</strong>
-    <%= user.document %>
-  </p>
-
-  <p>
-    <strong>Notification:</strong>
-    <%= user.notification %>
-  </p>
-
-  <p>
-    <strong>Status:</strong>
-    <%= user.status %>
-  </p>
-
-  <p>
-    <strong>Time:</strong>
-    <%= user.team.name %>
-  </p>
-
+  <tr>
+    <td><%= user.name %></td>
+    <td><%= user.username %></td>
+    <td><%= user.email %></td>
+    <td><%= user.admin %></td>
+    <td><%= user.document %></td>
+    <td><%= user.notification %></td>
+    <td><%= user.status %></td>
+    <td><%= user.team.name %></td>
+    <td><%= user.created_at %></td>
+    <td><%= user.updated_at %></td>
+    <td><%= link_to "Editar", edit_user_path(user) %></td>
+    <td>Excluir</td>
+  </tr>
 </div>

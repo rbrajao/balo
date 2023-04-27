@@ -25,7 +25,7 @@
 
     <section class="section">
       <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-8">
 
           <div class="card" id="teams">
             <div class="card-body" >
@@ -55,18 +55,17 @@
                
                 <div class="text-center">
                   <%= form.submit "Alterar",class: "btn btn-primary"%>
-                  <%= button_to "Cancelar", teams_path, class: "btn btn-secondary" %>
                 </div>
+                <br>
               </form><!-- End Horizontal Form -->
-
-
-          
             </div>
           </div>
         </div>
       </div>
     </section>
     <%= link_to "Back to teams", teams_path %>
+
+    <%= button_to "Destroy this team", @team, method: :delete %>
   </main><!-- End #main -->
   
 <% end %>

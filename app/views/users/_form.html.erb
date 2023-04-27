@@ -11,52 +11,100 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
-  </div>
+  <main id="main" class="main">
+    <!-- start Page Title -->
+    <div class="pagetitle">
+      <h1>Dados do usuário</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><%= link_to "Home", root_path %></li>
+          <li class="breadcrumb-item active">Usuário</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
 
-  <div>
-    <%= form.label :username, style: "display: block" %>
-    <%= form.text_field :username %>
-  </div>
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
 
-  <div>
-    <%= form.label :password, style: "display: block" %>
-    <%= form.text_field :password %>
-  </div>
+          <div class="card" id="users">
+            <div class="card-body" >
+              <h5 class="card-title">Dados do usuário</h5>
 
-  <div>
-    <%= form.label :email, style: "display: block" %>
-    <%= form.text_field :email %>
-  </div>
+                  <!-- Horizontal Form -->
 
-  <div>
-    <%= form.label :admin, style: "display: block" %>
-    <%= form.check_box :admin %>
-  </div>
+                <div class="row mb-3">
+                  <%= form.label 'Nome', class: "col-sm-2 col-form-label" %>
+                  <div class="col-sm-10">
+                    <%= form.text_field :name, autofocus: true, class: "form-control" %>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <%= form.label 'Username', class: "col-sm-2 col-form-label" %>
+                  <div class="col-sm-10">
+                    <%= form.text_field :username, autofocus: true, class: "form-control" %>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <%= form.label 'Password', class: "col-sm-2 col-form-label" %>
+                  <div class="col-sm-10">
+                    <%= form.text_field :password, autofocus: true, class: "form-control" %>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <%= form.label 'E-mail', class: "col-sm-2 col-form-label" %>
+                  <div class="col-sm-10">
+                    <%= form.text_field :email, autofocus: true, class: "form-control" %>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                 <%= form.label 'Time', class: "col-sm-2 col-form-label" %>
+                  <div class="col-sm-10">
+                        <%= form.collection_select(:team_id, @teams, :id, :name) %>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <%= form.label 'Documento', class: "col-sm-2 col-form-label" %>
+                  <div class="col-sm-10">
+                    <%= form.text_field :document, autofocus: true, class: "form-control" %>
+                  </div>
+                </div>
+                 <div class="row mb-3">
+                 <%= form.label 'Ativo?', class: "col-sm-2 col-form-label" %>
+                  <div class="col-sm-10">
+                      <%= form.check_box :status, class: "form-check" %>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                 <%= form.label 'Admin?', class: "col-sm-2 col-form-label" %>
+                  <div class="col-sm-10">
+                      <%= form.check_box :admin, class: "form-check" %>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                 <%= form.label 'Notificações?', class: "col-sm-2 col-form-label" %>
+                  <div class="col-sm-10">
+                      <%= form.check_box :notification, class: "form-check" %>
+                    </div>
+                  </div>
+                </div>
 
-  <div>
-    <%= form.label :document, style: "display: block" %>
-    <%= form.text_field :document %>
-  </div>
+                <div class="text-center">
+                  <%= form.submit "Alterar",class: "btn btn-primary"%>
+                </div>
+                <br>
 
-  <div>
-    <%= form.label :notification, style: "display: block" %>
-    <%= form.check_box :notification %>
-  </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <%= link_to "Voltar", users_path %>
 
-  <div>
-    <%= form.label :status, style: "display: block" %>
-    <%= form.text_field :status %>
-  </div>
+    <%= button_to "Destroy this team", @team, method: :delete %>
+  </main><!-- End #main -->
 
-  <div>
-    <%= form.label :team_id, style: "display: block" %>
-    <%= form.collection_select(:team_id, @teams, :id, :name) %>
-  </div>
-
-  <div>
-    user: <%= form.submit %>
-  </div>
 <% end %>
