@@ -1,13 +1,17 @@
 class RoundsController < ApplicationController
   before_action :set_round, only: %i[ show edit update destroy ]
-  before_action :set_championship, only: %i[ show edit update new ]
+  before_action :set_championship, only: %i[ show edit update new index]
 
   # template do portal 
   layout 'application'
 
   # GET /rounds or /rounds.json
   def index
-    @rounds = Round.all
+    if params[:championship_id].present?
+      @rounds = Round.where(championship_id: params[:championship_id])
+    else
+      @rounds = Round.all
+    end
   end
 
   # GET /rounds/1 or /rounds/1.json
