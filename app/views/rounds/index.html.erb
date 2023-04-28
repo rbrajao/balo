@@ -1,16 +1,50 @@
-<p style="color: green"><%= notice %></p>
 
-<h1>Rounds</h1>
+<main id="main" class="main">
+    <!-- start Page Title -->
+    <div class="pagetitle">
+      <h1>Cadastro das rodadas <span style="color: green"><%= notice %></span></h1>
+      
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><%= link_to "Home", root_path %></li>
+          <li class="breadcrumb-item active">Rodadas</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
 
-<div id="rounds">
-  <% @rounds.each do |round| %>
-    <%= render round %>
-    <p>
-      <%= link_to "Show this round", round %>
-    </p>
-  <% end %>
-</div>
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
 
-<%= link_to "New round", new_round_path %>
-<br>
-<%= link_to "Home", root_path %>
+          <div class="card" id="rounds">
+            <div class="card-body" >
+              <h5 class="card-title">Lista das rodadas - <%= link_to "Nova rodada", new_round_path %></h5>
+              
+              <!-- Default Table -->
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Campeonato</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Data limite</th>
+                    <th scope="col">Descrição</th>                    
+                    <th scope="col">Status</th>
+                    <th scope="col">Data criação</th>
+                    <th scope="col">Data atualização</th>
+                    <th scope="col">Editar</th>
+                    <th scope="col">Excluir</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @rounds.each do |round| %>
+                    <%= render round %>
+                  <% end %>
+                </tbody>
+              </table>
+              <!-- End Default Table Example -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main><!-- End #main -->

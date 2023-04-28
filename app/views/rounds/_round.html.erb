@@ -1,27 +1,15 @@
 <div id="<%= dom_id round %>">
-  <p>
-    <strong>Name:</strong>
-    <%= round.name %>
-  </p>
-
-  <p>
-    <strong>Limit date bet:</strong>
-    <%= round.limit_date_bet %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= round.description %>
-  </p>
-
-  <p>
-    <strong>Status:</strong>
-    <%= round.status %>
-  </p>
-
-  <p>
-    <strong>Campeonato:</strong>
-    <%= round.championship.name %>
-  </p>
+  
+   <tr>
+      <td><%= round.championship.name %></td>
+      <td><%= round.name %></td>
+      <td><%= round.limit_date_bet %></td>
+      <td><%= round.description %></td>                    
+      <td><%= round.status %></td>
+      <td><%= round.created_at %></td>
+      <td><%= round.updated_at %></td>
+      <td><%= link_to "Editar", edit_round_path(round) %></td>
+      <td>Excluir</td>
+    </tr>
 
 </div>

@@ -2,6 +2,9 @@ class RoundsController < ApplicationController
   before_action :set_round, only: %i[ show edit update destroy ]
   before_action :set_championship, only: %i[ show edit update new ]
 
+  # template do portal 
+  layout 'application'
+
   # GET /rounds or /rounds.json
   def index
     @rounds = Round.all
@@ -26,7 +29,7 @@ class RoundsController < ApplicationController
 
     respond_to do |format|
       if @round.save
-        format.html { redirect_to round_url(@round), notice: "Round was successfully created." }
+        format.html { redirect_to rounds_url, notice: "Round was successfully created." }
         format.json { render :show, status: :created, location: @round }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +42,7 @@ class RoundsController < ApplicationController
   def update
     respond_to do |format|
       if @round.update(round_params)
-        format.html { redirect_to round_url(@round), notice: "Round was successfully updated." }
+        format.html { redirect_to rounds_url, notice: "Round was successfully updated." }
         format.json { render :show, status: :ok, location: @round }
       else
         format.html { render :edit, status: :unprocessable_entity }
