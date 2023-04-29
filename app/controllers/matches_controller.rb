@@ -2,6 +2,9 @@ class MatchesController < ApplicationController
   before_action :set_match, only: %i[ show edit update destroy ]
   before_action :set_round, only: %i[ show edit update new ]
 
+  # template HTML
+  layout 'application'
+
   # GET /matches or /matches.json
   def index
     @matches = Match.all

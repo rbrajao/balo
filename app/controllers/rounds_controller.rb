@@ -7,11 +7,16 @@ class RoundsController < ApplicationController
 
   # GET /rounds or /rounds.json
   def index
-    if params[:championship_id].present?
-      @rounds = Round.where(championship_id: params[:championship_id])
-    else
-      @rounds = Round.all
-    end
+    # if params[:championship_id].present?
+      
+      @selected_championship_id = params[:championship_id] || session[:selected_championship_id]
+      session[:selected_championship_id] = @selected_championship_id
+      @rounds = Round.where(championship_id: @selected_championship_id)
+      
+
+    # else
+    #   @rounds = Round.all
+    # end
   end
 
   # GET /rounds/1 or /rounds/1.json

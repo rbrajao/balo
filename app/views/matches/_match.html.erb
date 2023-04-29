@@ -1,22 +1,14 @@
 <div id="<%= dom_id match %>">
-  <p>
-    <strong>Name:</strong>
-    <%= match.name %>
-  </p>
-
-  <p>
-    <strong>Score home:</strong>
-    <%= match.score_home %>
-  </p>
-
-  <p>
-    <strong>Score visit:</strong>
-    <%= match.score_visit %>
-  </p>
-
-  <p>
-    <strong>Status:</strong>
-    <%= match.status %>
-  </p>
+  <tr>
+      <td><%= match.name %></td>
+      <td><%= match.score_home %></td>
+      <td><%= match.score_visit %></td>
+      <td><%= match.match_date %></td>
+      <td><%= match.status %></td>
+      <td><%= match.created_at %></td>
+      <td><%= match.updated_at %></td>
+      <td><%= link_to "Editar", edit_match_path(match) %></td>
+      <td>Excluir</td>
+  </tr>
 
 </div>

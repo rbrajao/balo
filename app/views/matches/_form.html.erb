@@ -11,35 +11,84 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
-  </div>
+<main id="main" class="main">
+    <!-- start Page Title -->
+    <div class="pagetitle">
+      <h1>Cadastro dos jogos da rodada</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><%= link_to "Home", root_path %></li>
+          <li class="breadcrumb-item active">Rodadas</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
 
-  <div>
-    <%= form.label :score_home, style: "display: block" %>
-    <%= form.number_field :score_home %>
-  </div>
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
 
-  <div>
-    <%= form.label :score_visit, style: "display: block" %>
-    <%= form.number_field :score_visit %>
-  </div>
+          <div class="card" id="matches">
+            <div class="card-body" >
+              <h5 class="card-title">Jogos</h5>
 
-  <div>
-    <%= form.label :status, style: "display: block" %>
-    <%= form.text_field :status %>
-  </div>
+                  <!-- Horizontal Form -->
+              <form>
 
-   <div>
-    <%= form.label :match_date, style: "display: block" %>
-    <%= form.datetime_field :match_date %>
-  </div>
-  
-  <div>
-    <%= form.label :round_id, style: "display: block" %>
-    <%= form.collection_select(:round_id, @rounds, :id, :name) %>
-  </div>
+                <div>
+                  <%= form.label :round_id, style: "display: block" %>
+                  <%= form.collection_select(:round_id, @rounds, :id, :name) %>
+                </div>
+
+                <div class="row mb-3">
+                  <%= form.label 'Time', class: "col-sm-2 col-form-label" %>
+                  <div class="col-sm-10">
+                    <%= form.text_field :name, autofocus: true, class: "form-control" %>
+                  </div>
+                </div>
+               <div class="row mb-3">
+                  <%= form.label 'Score mandante', class: "col-sm-2 col-form-label" %>
+                  <div class="col-sm-10">
+                    <%= form.number_field :score_home, class: "form-control"  %>
+                  </div>
+                </div>
+                 <div class="row mb-3">
+                  <%= form.label 'Score visitante', class: "col-sm-2 col-form-label" %>
+                  <div class="col-sm-10">
+                    <%= form.number_field :score_visit, class: "form-control"  %>
+                  </div>
+                </div>
+                </div>
+                 <div class="row mb-3">
+                  <%= form.label 'Score visitante', class: "col-sm-2 col-form-label" %>
+                  <div class="col-sm-10">
+                    <%= form.datetime_field :match_date, class: "form-control"  %>
+                  </div>
+                </div>
+                 <div class="row mb-3">
+                 <%= form.label 'Ativo?', class: "col-sm-2 col-form-label" %>
+                  <div class="col-sm-10">
+                      <%= form.check_box :status, class: "form-check" %>
+                    </div>
+                  </div>
+                </div>
+               
+                <div class="text-center">
+                  <%= form.submit "Alterar",class: "btn btn-primary"%>
+                </div>
+                <br>
+              </form><!-- End Horizontal Form -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <%= link_to "Voltar", matches_path %>
+
+    <%= button_to "Remover", @match, method: :delete %>
+  </main><!-- End #main -->
+
+
+
 
   <div>
     <%= form.submit %>

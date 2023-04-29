@@ -20,29 +20,39 @@
             <div class="card-body" >
               <h5 class="card-title">Lista das divisões - <%= link_to "Nova divisão", new_division_path %></h5>
               
-              <!-- Default Table -->
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">Campeonato</th>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Sobem</th>
-                    <th scope="col">Descem</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Data criação</th>
-                    <th scope="col">Data atualização</th>
-                    <th scope="col">Editar</th>
-                    <th scope="col">Excluir</th>
-                  </tr>
-                </thead>
-                <tbody>
-                 <% @divisions.each do |division| %>
-                     <%= render division %> 
-                  <%  end 
-                %>
-                </tbody>  
-              </table>
-              <!-- End Default Table Example -->
+
+                <%= form_tag divisions_path, method: :get do %>
+                <div>Campeonato:
+                <%= select_tag :championship_id, options_from_collection_for_select(@championships, "id", "name", selected: params[:championship_id]), prompt: "Selecione um campeonato", onchange: "this.form.submit();" %>
+                </div>
+              
+                <br>
+                <br>
+                  <!-- Default Table -->
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Campeonato</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Sobem</th>
+                        <th scope="col">Descem</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Data criação</th>
+                        <th scope="col">Data atualização</th>
+                        <th scope="col">Editar</th>
+                        <th scope="col">Excluir</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    <% @divisions.each do |division| %>
+                        <%= render division %> 
+                      <%  end 
+                    %>
+                    </tbody>  
+                  </table>
+                  <!-- End Default Table Example -->
+
+              <% end %>
             </div>
           </div>
         </div>

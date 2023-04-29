@@ -1,16 +1,54 @@
-<p style="color: green"><%= notice %></p>
+<main id="main" class="main">
+    <!-- start Page Title -->
+    <div class="pagetitle">
+      <h1>Cadastro dos jogos da rodada<span style="color: green"><%= notice %></span></h1>
+      
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><%= link_to "Home", root_path %></li>
+          <li class="breadcrumb-item active">Jogos</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
 
-<h1>Matches</h1>
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
 
-<div id="matches">
-  <% @matches.each do |match| %>
-    <%= render match %>
-    <p>
-      <%= link_to "Show this match", match %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New match", new_match_path %>
+          <div class="card" id="matches">
+            <div class="card-body" >
+              <h5 class="card-title">Lista dos jogos - <%= link_to "Novo jogo", new_match_path %></h5>
+              
+              <!-- Default Table -->
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Score Mandante</th>
+                    <th scope="col">Score Visitante</th>
+                    <th scope="col">Data do Jogo</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Data criação</th>
+                    <th scope="col">Data atualização</th>
+                    <th scope="col">Editar</th>
+                    <th scope="col">Excluir</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @matches.each do |match| %>
+                    <%= render match %>
+                  <% end %>
+                </tbody>
+              </table>
+              <!-- End Default Table Example -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main><!-- End #main -->
 <br>
+
+
+
 <%= link_to "Home", root_path %>

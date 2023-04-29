@@ -1,6 +1,6 @@
 class DivisionsController < ApplicationController
   before_action :set_division, only: %i[ show edit update destroy ]
-  before_action :set_championship, only: %i[ show edit update new ]
+  before_action :set_championship, only: %i[ show edit update new index ]
 
   # template do portal 
   layout 'application'
@@ -8,6 +8,11 @@ class DivisionsController < ApplicationController
   # GET /divisions or /divisions.json
   def index
     @divisions = Division.all
+
+    @selected_championship_id = params[:championship_id] || session[:selected_championship_id]
+    session[:selected_championship_id] = @selected_championship_id
+    @divisions = Division.where(championship_id: @selected_championship_id)
+
   end
 
   # GET /divisions/1 or /divisions/1.json
