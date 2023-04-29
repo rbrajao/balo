@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   get 'competidor' => 'users#index'
   get 'admin' => 'admin#index'
 
+  #populate round list
+  get '/rounds_by_championship', to: 'rounds#by_championship'
+
   # Defines the root path route ("/")
   root "admin#index"
 end

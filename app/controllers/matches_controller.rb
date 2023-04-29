@@ -1,6 +1,7 @@
 class MatchesController < ApplicationController
   before_action :set_match, only: %i[ show edit update destroy ]
-  before_action :set_round, only: %i[ show edit update new ]
+  before_action :set_round, only: %i[ show edit update new index]
+  before_action :set_championship, only: %i[ show edit update new index]
 
   # template HTML
   layout 'application'
@@ -8,6 +9,15 @@ class MatchesController < ApplicationController
   # GET /matches or /matches.json
   def index
     @matches = Match.all
+
+    @selected_championship_id = params[:championship_id] || session[:selected_championship_id]
+    session[:selected_championship_id] = @selected_championship_id
+    
+    @selected_round_id = params[:round_id] || session[:selected_round_id]
+    session[:selected_round_id] = @selected_round_id
+
+    @matches = Match.where(round_id: @selected_round_id)
+
   end
 
   # GET /matches/1 or /matches/1.json
@@ -69,10 +79,14 @@ class MatchesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def match_params
-      params.require(:match).permit(:name, :score_home, :score_visit, :status, :match_date)
+      params.require(:match).permit(:name, :score_home, :score_visit, :status, :match_date, :championship_id, :round_id)
     end
 
     def set_round
       @rounds = Round.all
+    end
+
+    def set_championship
+      @championships = Championship.all
     end
 end

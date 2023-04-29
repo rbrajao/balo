@@ -70,6 +70,11 @@ class RoundsController < ApplicationController
     end
   end
 
+  def by_championship
+    rounds = Round.where(championship_id: params[:championship_id])
+    render json: rounds
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_round
@@ -85,6 +90,5 @@ class RoundsController < ApplicationController
     def set_championship
       @championships = Championship.all
     end
-
 
 end
