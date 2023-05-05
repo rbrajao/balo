@@ -2,6 +2,7 @@ class MatchesController < ApplicationController
   before_action :set_match, only: %i[ show edit update destroy ]
   before_action :set_round, only: %i[ show edit update new index]
   before_action :set_championship, only: %i[ show edit update new index]
+  before_action :set_team, only: %i[ show edit update new ]
 
   # template HTML
   layout 'application'
@@ -36,12 +37,16 @@ class MatchesController < ApplicationController
   # POST /matches or /matches.json
   def create
     @match = Match.new(match_params)
+    puts "chegou aqui 1"
+    puts @match.inspect
 
     respond_to do |format|
       if @match.save
-        format.html { redirect_to match_url(@match), notice: "Match was successfully created." }
+        puts "chegou aqui 2"
+        format.html { redirect_to matches_url, notice: "Match was successfully created." }
         format.json { render :show, status: :created, location: @match }
       else
+        puts "chegou aqui 3"
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @match.errors, status: :unprocessable_entity }
       end
@@ -52,7 +57,7 @@ class MatchesController < ApplicationController
   def update
     respond_to do |format|
       if @match.update(match_params)
-        format.html { redirect_to match_url(@match), notice: "Match was successfully updated." }
+        format.html { redirect_to matches_url, notice: "Match was successfully updated." }
         format.json { render :show, status: :ok, location: @match }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -79,7 +84,7 @@ class MatchesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def match_params
-      params.require(:match).permit(:name, :score_home, :score_visit, :status, :match_date, :championship_id, :round_id)
+      params.require(:match).permit(:name, :score_home, :score_visit, :status, :match_date, :championship_id, :round_id, :teamhome_id, :teamvisit_id)
     end
 
     def set_round
@@ -88,5 +93,9 @@ class MatchesController < ApplicationController
 
     def set_championship
       @championships = Championship.all
+    end
+
+    def set_team
+      @teams = Team.all
     end
 end
