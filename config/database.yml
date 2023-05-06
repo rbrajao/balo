@@ -53,3 +53,12 @@ production:
   database: balo_production
   username: balo
   password: <%= ENV["BALO_DATABASE_PASSWORD"] %>
+
+fly:
+  Username:    postgres
+  Password:    u39JBo4ybLT7MQk
+  Hostname:    obolao-db.internal
+  Flycast:     fdaa:2:2048:0:1::4
+  Proxy port:  5432
+  Postgres port:  5433
+  Connection string: postgres://postgres:u39JBo4ybLT7MQk@obolao-db.flycast:5432
