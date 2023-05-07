@@ -37,16 +37,18 @@ class MatchesController < ApplicationController
   # POST /matches or /matches.json
   def create
     @match = Match.new(match_params)
-    puts "chegou aqui 1"
-    puts @match.inspect
 
+    puts "chegou aqui 1"
+    puts match_params.inspect
+    puts @match.inspect
+    
     respond_to do |format|
       if @match.save
         puts "chegou aqui 2"
         format.html { redirect_to matches_url, notice: "Match was successfully created." }
         format.json { render :show, status: :created, location: @match }
       else
-        puts "chegou aqui 3"
+        puts "erro ao salvar matches"
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @match.errors, status: :unprocessable_entity }
       end
@@ -55,6 +57,7 @@ class MatchesController < ApplicationController
 
   # PATCH/PUT /matches/1 or /matches/1.json
   def update
+
     respond_to do |format|
       if @match.update(match_params)
         format.html { redirect_to matches_url, notice: "Match was successfully updated." }

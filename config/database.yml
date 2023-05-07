@@ -54,6 +54,7 @@ production:
   username: balo
   password: <%= ENV["BALO_DATABASE_PASSWORD"] %>
 
+
 fly:
   Username:    postgres
   Password:    u39JBo4ybLT7MQk

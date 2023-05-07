@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   #populate round list
   get '/rounds_by_championship', to: 'rounds#by_championship'
 
+
   # Defines the root path route ("/")
   root "admin#index"
 end
